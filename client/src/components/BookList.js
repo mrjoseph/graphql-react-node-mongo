@@ -14,7 +14,6 @@ const getBooksQuery = gql`
 class BookList extends Component {
   render(){
     const { data: { books } } = this.props;
-    console.log(books);
     if(books) {
       return(
           <div>
