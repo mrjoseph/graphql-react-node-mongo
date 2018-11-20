@@ -1,6 +1,7 @@
 const graphql = require('graphql');
 const _ = require('lodash');
 
+//Mongo DB models
 const Book = require('../models/book');
 const Author = require('../models/author');
 
@@ -43,6 +44,7 @@ const AuthorType = new GraphQLObjectType({
   }),
 });
 
+// Queries
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
@@ -66,7 +68,7 @@ const RootQuery = new GraphQLObjectType({
         return Book.find({});
       }
     },
-    authors:{
+    authors:{ // returns a list of authors
       type: new GraphQLList(AuthorType), //returns a list of authorTypes
       resolve(parent,args) {
         return Author.find({});
@@ -75,6 +77,7 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
+// Add authors & books
 const Mutations = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -107,7 +110,14 @@ const Mutations = new GraphQLObjectType({
         });
         return book.save();
       }
-    }
+    },
+    deleteBook: { // Returns book by id
+      type: BookType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args){
+        return Book.findByIdAndRemove(args.id);
+      }
+    },
   }
 });
 module.exports = new GraphQLSchema({

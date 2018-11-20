@@ -4,7 +4,6 @@ import { getBookQuery } from '../queries/queries'
 class BookDetails extends Component {
   render() {
    const { data: { book } } = this.props;
-    console.log('book', book || '');
     if (book) {
       const { name, genre, author: { name: authorName, age, books} } = book;
       return(
