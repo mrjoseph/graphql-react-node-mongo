@@ -16,9 +16,19 @@ var authors = [
 
 ```
 
+
+#### Start mongo
+Terminal 1
+```
+mongo
+```
+Terminal 2
+```
+mongod
+```
 To start the app you will need to open 2 terminal windows. One for the client and another for the server
 #### Start server
-Terminal 1
+Terminal 3
 
 ```
 cd server
@@ -27,7 +37,7 @@ yarn start
 ```
 
 #### Start client
-Terminal 2
+Terminal 4
 
 ```
 cd client
