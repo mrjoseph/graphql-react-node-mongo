@@ -62,4 +62,11 @@ export const getBookQuery = gql`
     }
 `;
 
+export const showTypeMutation = gql`
+  mutation showTypeMutation($show_type: String!) {
+    changeShowType(show_type: $show_type) @client {
+      show_type
+    }
+  }
+`;
 
